@@ -10,7 +10,7 @@ Apache Spark is a unified computing engine for parallel data processing over a c
 
 ## How does spark work?
 
-Spark has two primitives. The RDD, which stands for A **Residual Distributed Dataset**, and the **Distributed Variable**. First lets talk a little about what is a RDD. Plainly, a RDD is Residual Distributed Dataset, (just kidding)...A RDD is represents an immutable partitioned collection of records that can parallelized.
+Spark has two primitives. The RDD, which stands for A **Residual Distributed Dataset**, and the **Distributed Variable**. First lets talk a little about what is a RDD. Plainly, a RDD is Residual Distributed Dataset, (just kidding)...A RDD is represents an immutable partitioned collection of records that can parallelized. There are two types of distributed shared variables are Broadcast Variables and Accumulators. Broadcast variables allow you to efficiently share a large, immutable value (like a lookup table) to all worker nodes, preventing repeated network transmissions. Accumulators enable safe aggregation of information across all tasks in a distributed manner, which is useful for counting or summing values and can only be updated by tasks and read by the driver.
 
 ::: info NOTE
 Running tasks in parallel, is not the same thing as running tasks concurrently. Parallel does a collection of things at the same time while Concurrency manages a collection of things together, but only is every doing one task at a time.  

@@ -21,6 +21,9 @@ export default defineConfig({
   title: "My Awesome Project",
   description: "A VitePress Site",
   themeConfig: {
+    outline: {
+      level: [2, 4]
+    },
     nav: [
       { text: "Home", link: "/" },
       {
@@ -113,8 +116,14 @@ export default defineConfig({
       ],
       "/data_engineering/": [
         {
-          text: "Data Engineering",
-          items: [{ text: "Data Modeling", link: "/data_engineering/index" }],
+          text: "Data Engineering (AWS)",
+          items: [
+            { text: "Getting Started", link: "/data_engineering/index" },
+            { text: "Data Discovery", link: "/data_engineering/data-discovery" },
+            { text: "The Modern Data Architecture", link: "/data_engineering/modern-data-architecture" },
+            { text: "Orchestration and Automation", link: "/data_engineering/orchestration-and-automation" },
+            { text: "Security", link: "/data_engineering/security" }
+          ],
         },
       ],
       "/docs/python/": [

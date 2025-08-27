@@ -42,3 +42,22 @@ A shuffle is the moving of data between partitions,
 ### Optimizing Spark Shuffling
 
 Let the tool do what it is best at, and spark is great at distributed compute. Not so great at distributed aggregation. So what is the solution? Let spark handle the narrow transformations, cache the result in an intermediary storage, like DuckDB, then let databases do what they are good at, which aggregating data.
+
+---
+
+## Add Logical Decoding
+
+```sql
+ALTER SYSTEM SET wal_level = logical;
+ALTER SYSTEM SET max_replication_slots = 10;
+ALTER SYSTEM SET max_wal_senders = 10;
+
+CREATE PUBLICATION world_content_publication
+FOR TABLE public.damage_type_definition;
+
+select * from pg_create_logical_replication_slot('my_slot', 'pgoutput');
+
+show wal_level;
+show max_replication_slots;
+show max_wal_senders;
+```
